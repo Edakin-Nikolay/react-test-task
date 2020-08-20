@@ -1,0 +1,18 @@
+@import "custom";
+$font-stack: Helvetica, sans-serif;
+
+.header {
+  text-align: center;
+  font: 100% $font-stack
+}
+
+span {
+  &.dangerText {
+    color: #dc3545;
+  }
+
+  &.infoText {
+    color: #17a2b8;
+    font-weight: bold;
+  }
+}
