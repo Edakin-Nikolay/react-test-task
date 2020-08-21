@@ -4,11 +4,11 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from "react-bootstrap/Container";
 
 const App: React.FC = () => {
-    return (<Container>
+    return (<Container fluid>
         <Jumbotron>
-            Hello, ts project!!!! HO HO HO!!!
+            <h2 className='header'>Hello, ts project!!!! HO HO HO!!!</h2>
             <br />
-            <Home title='Home page' count={12} />
+            <Home />
         </Jumbotron>
     </Container>);
 }
