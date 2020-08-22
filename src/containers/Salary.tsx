@@ -1,25 +1,20 @@
 import {connect} from 'react-redux';
-import {initialize} from 'redux-form';
-import {Dispatch} from "redux";
 
 import Salary from "../components/Salary";
+import {formValueSelector} from "redux-form";
 
-const init = {
-    salaryType: 'perMonth',
-    personalTax: true,
-    amount: 40000,
+export const SALARY_TYPES = {
+    PER_MONTH: 'perMonth',
+    MIN_WAGE: 'minWage',
+    PER_DAY: 'perDay',
+    PER_HOUR: 'perHour',
 };
 
-const mapStateToProps = (state: any) => {
-    const salary = state.form.salary;
-    return {
-        salaryType: salary ? salary.values.salaryType : init.salaryType,
-        personalTax: salary ? salary.values.personalTax : init.personalTax,
-    }
-};
+const selector = formValueSelector('salary');
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    initSalary: () => dispatch(initialize('salary', init)),
-})
+const mapStateToProps = (state: any) => ({
+        salaryType: selector(state, 'salaryType'),
+        personalTax: selector(state, 'personalTax'),
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Salary);
+export default connect(mapStateToProps)(Salary);
