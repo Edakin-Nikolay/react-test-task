@@ -6,6 +6,12 @@ $font-stack: Helvetica, sans-serif;
   font: 100% $font-stack
 }
 
+.formInline {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 span {
   &.dangerText {
     color: #dc3545;
