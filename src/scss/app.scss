@@ -28,6 +28,10 @@ $font-Arial: Arial, sans-serif;
   color: $dark;
 }
 
+//tooltip override
+.tooltip-inner { background-color: $info;}
+.tooltip.bottom .tooltip-arrow { border-bottom-color: $info; }
+
 .textField {
   border-radius: 15px;
   margin-right: 8px;

@@ -13,12 +13,12 @@ const Info: React.FC = () => {
         </Tooltip>;
 
     return (<>
-            <OverlayTrigger key='overlayInfoTrigger' placement='bottom' overlay={myTooltip}>
+            <OverlayTrigger key='overlayInfoTrigger' placement='bottom-start' overlay={myTooltip}>
                 <Button ref={target} onClick={() => setShow(!show)} variant='outline-info' className='btnCircle'>
                     {show ? '✖' : 'i'}
                 </Button>
             </OverlayTrigger>
-            <Overlay target={target.current} show={show} placement='bottom'>
+            <Overlay target={target.current} show={show} placement='bottom-start'>
                 {(props) => (myTooltip(props))}
             </Overlay>
         </>
