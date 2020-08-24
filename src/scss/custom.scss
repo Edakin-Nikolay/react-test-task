@@ -1,8 +1,6 @@
 /* make the customizations */
-$theme-colors: (
-        "info": tomato,
-        "danger": teal
-);
+$primary: #FFE5B4;
+$info: #6633ff;
 
 /* import bootstrap to set changes */
 @import "../../node_modules/bootstrap/scss/bootstrap";

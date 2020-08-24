@@ -25,20 +25,20 @@ const Payroll: React.FC = (props: any) => {
 
     }
     const finalSalary = calcFinalSalary();
-    return <Jumbotron>
+    return <Jumbotron className='jumbotron'>
         <Form>
-            <Form.Group className='formInline'>
-                <Form.Text>{finalSalary.salary} ₽&nbsp;</Form.Text>
-                <Form.Text>Сотрудник будет получать на руки</Form.Text>
-            </Form.Group>
-            <Form.Group className='formInline'>
-                <Form.Text>{finalSalary.tax} ₽&nbsp;</Form.Text>
-                <Form.Text>НДФЛ, 13% от оклада</Form.Text>
-            </Form.Group>
-            <Form.Group className='formInline'>
-                <Form.Text>{finalSalary.employeeCost} ₽&nbsp;</Form.Text>
-                <Form.Text>за сотрудника в месяц</Form.Text>
-            </Form.Group>
+            <Form.Row className='formInline'>
+                <Form.Text className='mainFont'>{finalSalary.salary} ₽&nbsp;</Form.Text>
+                <Form.Text className='secondFont'>сотрудник будет получать на руки</Form.Text>
+            </Form.Row>
+            <Form.Row className='formInline'>
+                <Form.Text className='mainFont'>{finalSalary.tax} ₽&nbsp;</Form.Text>
+                <Form.Text className='secondFont'>НДФЛ, 13% от оклада</Form.Text>
+            </Form.Row>
+            <Form.Row className='formInline'>
+                <Form.Text className='mainFont'>{finalSalary.employeeCost} ₽&nbsp;</Form.Text>
+                <Form.Text className='secondFont'>за сотрудника в месяц</Form.Text>
+            </Form.Row>
         </Form>
     </Jumbotron>;
 }

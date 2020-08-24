@@ -14,7 +14,7 @@ const Info: React.FC = () => {
 
     return (<>
             <OverlayTrigger key='overlayInfoTrigger' placement='bottom' overlay={myTooltip}>
-                <Button ref={target} onClick={() => setShow(!show)} variant='outline-primary' className='btnCircle'>
+                <Button ref={target} onClick={() => setShow(!show)} variant='outline-info' className='btnCircle'>
                     {show ? '✖' : 'i'}
                 </Button>
             </OverlayTrigger>

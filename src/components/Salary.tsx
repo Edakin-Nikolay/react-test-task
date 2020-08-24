@@ -10,17 +10,17 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
 
     const switchText: () => string = () => {
         if (salaryType === 'perDay')
-            return '₽ в день'
+            return '₽ в день';
         else if (salaryType === 'perHour')
-            return '₽ в час'
+            return '₽ в час';
         else
-            return '₽'
+            return '₽';
     };
 
     return (
         <Form >
-            <Form.Text muted>Сумма</Form.Text>
-            <Form.Group>
+            <Form.Text muted className='secondFont'>Сумма</Form.Text>
+            <Form.Group className='marginContainer'>
                 <Field
                     checkId={1}
                     name='salaryType'
@@ -30,12 +30,12 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
                     value={SALARY_TYPES.PER_MONTH}/>
                 <div className='formInline'>
                     <Field
-                    checkId={2}
-                    name='salaryType'
-                    component={CheckButton}
-                    label='МРОТ'
-                    type='radio'
-                    value={SALARY_TYPES.MIN_WAGE}/>
+                        checkId={2}
+                        name='salaryType'
+                        component={CheckButton}
+                        label='МРОТ'
+                        type='radio'
+                        value={SALARY_TYPES.MIN_WAGE}/>
                     <Info />
                 </div>
                 <Field
@@ -52,20 +52,21 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
                     label='Оплата за час'
                     type='radio'
                     value={SALARY_TYPES.PER_HOUR}/>
-            </Form.Group>
-            <Form.Group className='formInline'>
-                <Form.Text muted={personalTax}>Указать с НДФЛ</Form.Text>
-                <Field
-                    checkId={1}
-                    name='personalTax'
-                    component={CheckButton}
-                    label=''
-                    type='switch'/>
-                <Form.Text muted={!personalTax}>без НДФЛ</Form.Text>
-            </Form.Group>
-            <Form.Group className='formInline'>
-                <Field name='amount' component={TextField} />
-                <Form.Text>{switchText()}</Form.Text>
+                <Form.Row className='formInline marginContainer'>
+                    <Form.Text className='secondFont' muted={personalTax}>Указать с НДФЛ</Form.Text>
+                    <Field
+                        checkId={1}
+                        name='personalTax'
+                        styles={['marginSwitch']}
+                        component={CheckButton}
+                        label=''
+                        type='switch'/>
+                    <Form.Text className='secondFont' muted={!personalTax}>без НДФЛ</Form.Text>
+                </Form.Row>
+                <Form.Row className='formInline marginContainer'>
+                    <Field name='amount' component={TextField} />
+                    <Form.Text className='mainFont'>{switchText()}</Form.Text>
+                </Form.Row>
             </Form.Group>
         </Form>
     )

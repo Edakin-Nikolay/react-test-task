@@ -1,28 +1,70 @@
 @import "custom";
-$font-stack: Helvetica, sans-serif;
+$font-stack: 'Times New Roman', sans-serif;
+$font-Arial: Arial, sans-serif;
 
 .header {
   text-align: center;
   font: 100% $font-stack
 }
 
+.mainFont {
+  font-family: $font-Arial;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.secondFont {
+  font-family: $font-Arial;
+  font-weight: bold;
+  font-size: small;
+}
+
+.marginSwitch {
+  margin-left: 8px;
+  margin-right: 4px;
+}
+
+.radioButton:checked {
+  color: $dark;
+}
+
+.textField {
+  border-radius: 15px;
+  margin-right: 8px;
+  max-width: 200px;
+}
+
+.marginContainer {
+  margin-left: 14px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
 .formInline {
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
+  align-items: baseline;
+}
+
+.jumbotron {
+  padding: 24px;
+  margin-top: 8px;
+  background-color: $primary;
+  max-width: 400px;
 }
 
 .btnCircle {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   padding: 0 0 0 0;
   margin: 0px 4px 0px 4px;
   border-radius: 15px;
-  font-size: 20px;
-  font-family: 'Times New Roman', sans-serif;
+  font-size: 16px;
+  font-family: $font-stack;
   font-weight: bold;
   text-align: center;
 }
+
 
   span {
   &.dangerText {
