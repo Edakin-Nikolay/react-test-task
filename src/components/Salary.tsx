@@ -4,21 +4,22 @@ import Form from 'react-bootstrap/Form';
 
 import {CheckButton, TextField} from "./CustomControls";
 import {SALARY_TYPES} from "../containers/Salary";
+import Info from "./Info";
 
 const Salary: React.FC = ({salaryType, personalTax}: any) => {
 
     const switchText: () => string = () => {
         if (salaryType === 'perDay')
-            return 'Руб в день'
+            return '₽ в день'
         else if (salaryType === 'perHour')
-            return 'Руб в час'
+            return '₽ в час'
         else
-            return 'Руб'
+            return '₽'
     };
 
     return (
         <Form >
-            <Form.Label>Сумма</Form.Label>
+            <Form.Text muted>Сумма</Form.Text>
             <Form.Group>
                 <Field
                     checkId={1}
@@ -27,13 +28,16 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
                     label='Оклад за месяц'
                     type='radio'
                     value={SALARY_TYPES.PER_MONTH}/>
-                <Field
+                <div className='formInline'>
+                    <Field
                     checkId={2}
                     name='salaryType'
                     component={CheckButton}
                     label='МРОТ'
                     type='radio'
                     value={SALARY_TYPES.MIN_WAGE}/>
+                    <Info />
+                </div>
                 <Field
                     checkId={3}
                     name='salaryType'

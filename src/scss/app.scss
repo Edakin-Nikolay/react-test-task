@@ -12,7 +12,19 @@ $font-stack: Helvetica, sans-serif;
   justify-content: flex-start;
 }
 
-span {
+.btnCircle {
+  width: 30px;
+  height: 30px;
+  padding: 0 0 0 0;
+  margin: 0px 4px 0px 4px;
+  border-radius: 15px;
+  font-size: 20px;
+  font-family: 'Times New Roman', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+  span {
   &.dangerText {
     color: #dc3545;
   }
