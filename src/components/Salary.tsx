@@ -2,11 +2,11 @@ import React from 'react';
 import {reduxForm, Field} from 'redux-form';
 import Form from 'react-bootstrap/Form';
 
-import {CheckButton, TextField} from "./CustomControls";
-import {SALARY_TYPES} from "../containers/Salary";
+import {CheckButton, SwitchButton, TextField} from "./CustomControls";
+import {DEFAULT_AMOUNT, SALARY_TYPES} from "../containers/Salary";
 import Info from "./Info";
 
-const Salary: React.FC = ({salaryType, personalTax}: any) => {
+const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
 
     const switchText: () => string = () => {
         if (salaryType === 'perDay')
@@ -17,6 +17,16 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
             return '₽';
     };
 
+    const changeAmountField = (value: string) => {
+        if (value === SALARY_TYPES.PER_DAY) {
+            changeAmount(DEFAULT_AMOUNT.DAY);
+        } else if (value === SALARY_TYPES.PER_HOUR) {
+            changeAmount(DEFAULT_AMOUNT.HOUR);
+        } else {
+            changeAmount(DEFAULT_AMOUNT.MONTH);
+        }
+    }
+
     return (
         <Form >
             <Form.Text muted className='secondFont'>Сумма</Form.Text>
@@ -25,6 +35,7 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
                     checkId={1}
                     name='salaryType'
                     component={CheckButton}
+                    changeAmount={changeAmountField}
                     label='Оклад за месяц'
                     type='radio'
                     value={SALARY_TYPES.PER_MONTH}/>
@@ -33,6 +44,7 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
                         checkId={2}
                         name='salaryType'
                         component={CheckButton}
+                        changeAmount={changeAmountField}
                         label='МРОТ'
                         type='radio'
                         value={SALARY_TYPES.MIN_WAGE}/>
@@ -42,6 +54,7 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
                     checkId={3}
                     name='salaryType'
                     component={CheckButton}
+                    changeAmount={changeAmountField}
                     label='Оплата за день'
                     type='radio'
                     value={SALARY_TYPES.PER_DAY}/>
@@ -49,18 +62,16 @@ const Salary: React.FC = ({salaryType, personalTax}: any) => {
                     checkId={4}
                     name='salaryType'
                     component={CheckButton}
+                    changeAmount={changeAmountField}
                     label='Оплата за час'
                     type='radio'
                     value={SALARY_TYPES.PER_HOUR}/>
                 <Form.Row className='formInline marginContainer'>
                     <Form.Text className='secondFont' muted={personalTax}>Указать с НДФЛ</Form.Text>
                     <Field
-                        checkId={1}
+                        switchId={1}
                         name='personalTax'
-                        styles={['marginSwitch']}
-                        component={CheckButton}
-                        label=''
-                        type='switch'/>
+                        component={SwitchButton}/>
                     <Form.Text className='secondFont' muted={!personalTax}>без НДФЛ</Form.Text>
                 </Form.Row>
                 <Form.Row className='formInline marginContainer'>
