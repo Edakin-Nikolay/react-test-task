@@ -6,6 +6,7 @@ import {CheckButton, SwitchButton, TextField} from "./CustomControls";
 import {DEFAULT_AMOUNT, SALARY_TYPES} from "../containers/Salary";
 import Info from "./Info";
 
+//TODO разобраться с типами
 const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
 
     const switchText: () => string = () => {
@@ -17,13 +18,13 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
             return '₽';
     };
 
-    const changeAmountField = (value: string) => {
+    const changeAmountField: (value: string) => Promise<any> = (value: string) => {
         if (value === SALARY_TYPES.PER_DAY) {
-            changeAmount(DEFAULT_AMOUNT.DAY);
+            return changeAmount(DEFAULT_AMOUNT.DAY);
         } else if (value === SALARY_TYPES.PER_HOUR) {
-            changeAmount(DEFAULT_AMOUNT.HOUR);
+            return changeAmount(DEFAULT_AMOUNT.HOUR);
         } else {
-            changeAmount(DEFAULT_AMOUNT.MONTH);
+            return changeAmount(DEFAULT_AMOUNT.MONTH);
         }
     }
 

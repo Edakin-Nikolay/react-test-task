@@ -1,9 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 import Salary, {SALARY_TYPES} from "../containers/Salary";
 import Container from "react-bootstrap/Container";
 import Payroll from "../containers/Payroll";
 
-const App: React.FC = ({initSalary, salaryType}: any) => {
+interface AppProps {
+    initSalary: () => void,
+    salaryType: string,
+}
+
+const App: FunctionComponent<AppProps> = ({initSalary, salaryType}: AppProps) => {
     useEffect(() => {
        initSalary();
     }, []);

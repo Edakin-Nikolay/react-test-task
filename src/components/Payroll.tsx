@@ -1,30 +1,16 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import {Form} from "react-bootstrap";
+import {calcFinalSalary} from "../lib/util";
 
-const Payroll: React.FC = (props: any) => {
-    const {amount, personalTax} = props;
+interface payrollProps {
+    amount: number,
+    personalTax: boolean,
+}
 
-    const calcFinalSalary: () => {salary: number, tax: number, employeeCost: number} = () => {
-        if (personalTax) {
-            const amountWithTax = Math.round(amount * 100 / 87);
-            return {
-                salary: amount,
-                tax: amountWithTax - amount,
-                employeeCost: amountWithTax
-            }
-        }
-        else {
-            const amountWithoutTax = Math.round(amount * 87 / 100);
-            return {
-                salary: amountWithoutTax,
-                tax: Math.round(amount * 0.13),
-                employeeCost: amount,
-            }
-        }
+const Payroll: FunctionComponent<payrollProps> = ({amount, personalTax}: payrollProps) => {
 
-    }
-    const finalSalary = calcFinalSalary();
+    const finalSalary = calcFinalSalary(amount, personalTax);
     return <Jumbotron className='jumbotron'>
         <Form>
             <Form.Row className='formInline'>

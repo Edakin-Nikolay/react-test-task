@@ -19,7 +19,7 @@ const Info: React.FC = () => {
                 </Button>
             </OverlayTrigger>
             <Overlay target={target.current} show={show} placement='bottom-start'>
-                {(props) => (myTooltip(props))}
+                {props => (myTooltip(props))}
             </Overlay>
         </>
     );

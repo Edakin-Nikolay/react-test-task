@@ -1,15 +1,15 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import Form from "react-bootstrap/Form";
 
-type checkButtonProps = {
+interface checkButtonProps {
     input: any,
     label: string,
     type: 'checkbox' | 'radio' | undefined,
     checkId: number,
     styles: Array<string>,
-    changeAmount: (value: string) => any};
+    changeAmount: (value: string) => void}
 
-export const CheckButton: ({input, label, type, checkId, styles, changeAmount}: checkButtonProps) => JSX.Element =
+export const CheckButton: FunctionComponent<checkButtonProps> =
     ({input, label, type, checkId, styles, changeAmount}: checkButtonProps) => {
 
     return <Form.Check
@@ -24,7 +24,12 @@ export const CheckButton: ({input, label, type, checkId, styles, changeAmount}: 
         value={input.value}
     />};
 
-export const SwitchButton = ({input, switchId}: any) => {
+interface switchButtonProps {
+    input: any,
+    switchId: number,
+}
+
+export const SwitchButton: FunctionComponent<switchButtonProps> = ({input, switchId}: switchButtonProps) => {
     return <Form.Switch
         id={`switch-${switchId}`}
         className='marginSwitch'
@@ -35,8 +40,6 @@ export const SwitchButton = ({input, switchId}: any) => {
     />
 };
 
-export const TextField: React.FC = (props: any) => {
-   const {input} = props;
+export const TextField: React.FC = (input: any) =>
+   <Form.Control className='mainFont textField' onChange={input.onChange} value={input.value} />
 
-   return <Form.Control className='mainFont textField' onChange={input.onChange} value={input.value} />
-}

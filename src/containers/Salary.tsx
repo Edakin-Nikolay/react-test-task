@@ -4,6 +4,8 @@ import Salary from "../components/Salary";
 import {change, formValueSelector} from "redux-form";
 import {Dispatch} from "redux";
 
+//export type salaryType = 'perMonth' | 'minWage' | 'perDay' | 'perHour';
+
 export const SALARY_TYPES = {
     PER_MONTH: 'perMonth',
     MIN_WAGE: 'minWage',
