@@ -1,11 +1,12 @@
 import React, {FunctionComponent, useEffect} from 'react';
-import Salary, {SALARY_TYPES} from "../containers/Salary";
+import Salary from "../containers/Salary";
 import Container from "react-bootstrap/Container";
 import Payroll from "../containers/Payroll";
+import {SALARY, SalaryType} from '../lib/SalaryFormTypes';
 
 interface AppProps {
     initSalary: () => void,
-    salaryType: string,
+    salaryType: SalaryType,
 }
 
 const App: FunctionComponent<AppProps> = ({initSalary, salaryType}: AppProps) => {
@@ -17,7 +18,7 @@ const App: FunctionComponent<AppProps> = ({initSalary, salaryType}: AppProps) =>
             <h2 className='header'>Расчёт зарплаты</h2>
             <br />
             <Salary />
-            {salaryType === SALARY_TYPES.PER_MONTH && <Payroll />}
+            {salaryType === SALARY.PER_MONTH && <Payroll />}
     </Container>);
 }
 

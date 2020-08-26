@@ -1,9 +1,9 @@
 import React from 'react';
-import {reduxForm, Field} from 'redux-form';
+import {reduxForm, Field, FormErrors} from 'redux-form';
 import Form from 'react-bootstrap/Form';
 
 import {CheckButton, SwitchButton, TextField} from "./CustomControls";
-import {DEFAULT_AMOUNT, SALARY_TYPES} from "../containers/Salary";
+import {DEFAULT_AMOUNT, SALARY, SalaryFormTypes} from "../lib/SalaryFormTypes";
 import Info from "./Info";
 
 //TODO разобраться с типами
@@ -18,13 +18,13 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
             return '₽';
     };
 
-    const changeAmountField: (value: string) => Promise<any> = (value: string) => {
-        if (value === SALARY_TYPES.PER_DAY) {
-            return changeAmount(DEFAULT_AMOUNT.DAY);
-        } else if (value === SALARY_TYPES.PER_HOUR) {
-            return changeAmount(DEFAULT_AMOUNT.HOUR);
+    const changeAmountField: (value: string) => void = (value: string) => {
+        if (value === SALARY.PER_DAY) {
+            changeAmount(DEFAULT_AMOUNT.DAY);
+        } else if (value === SALARY.PER_HOUR) {
+            changeAmount(DEFAULT_AMOUNT.HOUR);
         } else {
-            return changeAmount(DEFAULT_AMOUNT.MONTH);
+            changeAmount(DEFAULT_AMOUNT.MONTH);
         }
     }
 
@@ -39,7 +39,7 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
                     changeAmount={changeAmountField}
                     label='Оклад за месяц'
                     type='radio'
-                    value={SALARY_TYPES.PER_MONTH}/>
+                    value={SALARY.PER_MONTH}/>
                 <div className='formInline'>
                     <Field
                         checkId={2}
@@ -48,7 +48,7 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
                         changeAmount={changeAmountField}
                         label='МРОТ'
                         type='radio'
-                        value={SALARY_TYPES.MIN_WAGE}/>
+                        value={SALARY.MIN_WAGE}/>
                     <Info />
                 </div>
                 <Field
@@ -58,7 +58,7 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
                     changeAmount={changeAmountField}
                     label='Оплата за день'
                     type='radio'
-                    value={SALARY_TYPES.PER_DAY}/>
+                    value={SALARY.PER_DAY}/>
                 <Field
                     checkId={4}
                     name='salaryType'
@@ -66,7 +66,7 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
                     changeAmount={changeAmountField}
                     label='Оплата за час'
                     type='radio'
-                    value={SALARY_TYPES.PER_HOUR}/>
+                    value={SALARY.PER_HOUR}/>
                 <Form.Row className='formInline marginContainer'>
                     <Form.Text className='secondFont' muted={personalTax}>Указать с НДФЛ</Form.Text>
                     <Field
@@ -86,5 +86,12 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
 
 export default reduxForm({
     form: 'salary',
+    validate(values: SalaryFormTypes): FormErrors<SalaryFormTypes> {
+        const errors: FormErrors<SalaryFormTypes> = { };
+        if (isNaN(Number(values.amount))) {
+            errors.amount = 'В поле должно быть введено число'
+        }
+        return errors;
+    }
 })(Salary);
 

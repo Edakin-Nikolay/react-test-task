@@ -3,8 +3,9 @@ import {initialize, formValueSelector} from 'redux-form';
 import {Dispatch} from "redux";
 
 import App from "../components/App";
+import { SalaryFormTypes } from '../lib/SalaryFormTypes';
 
-const initSalary = {
+const initSalary: SalaryFormTypes = {
     salaryType: 'perMonth',
     personalTax: true,
     amount: 40000,

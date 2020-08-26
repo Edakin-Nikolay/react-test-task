@@ -7,16 +7,24 @@ $font-Arial: Arial, sans-serif;
   font: 100% $font-stack
 }
 
-.mainFont {
+%fontBase {
   font-family: $font-Arial;
   font-weight: bold;
+}
+
+.mainFont {
+  @extend %fontBase;
   font-size: larger;
 }
 
 .secondFont {
-  font-family: $font-Arial;
-  font-weight: bold;
+  @extend %fontBase;
   font-size: small;
+}
+
+.errorText {
+  @extend .secondFont;
+  color: $danger,
 }
 
 .marginSwitch {
@@ -35,8 +43,9 @@ $font-Arial: Arial, sans-serif;
 .textField {
   border-radius: 15px;
   margin-right: 8px;
-  max-width: 200px;
+  max-width: 250px;
 }
+
 
 .marginContainer {
   margin-left: 14px;

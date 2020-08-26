@@ -4,21 +4,6 @@ import Salary from "../components/Salary";
 import {change, formValueSelector} from "redux-form";
 import {Dispatch} from "redux";
 
-//export type salaryType = 'perMonth' | 'minWage' | 'perDay' | 'perHour';
-
-export const SALARY_TYPES = {
-    PER_MONTH: 'perMonth',
-    MIN_WAGE: 'minWage',
-    PER_DAY: 'perDay',
-    PER_HOUR: 'perHour',
-};
-
-export const DEFAULT_AMOUNT = {
-    MONTH: 40000,
-    DAY: 1500,
-    HOUR: 400,
-};
-
 const selector = formValueSelector('salary');
 
 const mapStateToProps = (state: any) => ({

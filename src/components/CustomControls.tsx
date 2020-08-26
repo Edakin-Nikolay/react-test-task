@@ -40,6 +40,11 @@ export const SwitchButton: FunctionComponent<switchButtonProps> = ({input, switc
     />
 };
 
-export const TextField: React.FC = (input: any) =>
-   <Form.Control className='mainFont textField' onChange={input.onChange} value={input.value} />
+export const TextField: React.FC = (props: any) => {
+    const {input, meta} = props;
 
+    return <Form.Group>
+        <Form.Control className='mainFont textField' onChange={input.onChange} value={input.value}/>
+        {meta.error && <Form.Text className='errorText'>{meta.error}</Form.Text>}
+    </Form.Group>
+}
