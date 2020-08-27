@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import {initialize, formValueSelector} from 'redux-form';
+import {formValueSelector, initialize} from 'redux-form';
 import {Dispatch} from "redux";
 
 import App from "../components/App";
-import { SalaryFormTypes } from '../lib/SalaryFormTypes';
+import {SalaryFormTypes, SalaryType} from '../lib/SalaryFormTypes';
 
 const initSalary: SalaryFormTypes = {
-    salaryType: 'perMonth',
+    salaryType: SalaryType.PER_MONTH,
     personalTax: true,
     amount: 40000,
 };
