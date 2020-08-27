@@ -1,13 +1,24 @@
 import React from 'react';
-import {reduxForm, Field, FormErrors} from 'redux-form';
+import {reduxForm, Field, FormErrors, InjectedFormProps} from 'redux-form';
 import Form from 'react-bootstrap/Form';
 
 import {CheckButton, SwitchButton, TextField} from "./CustomControls";
 import {DEFAULT_AMOUNT, SalaryType, SalaryFormTypes} from "../lib/SalaryFormTypes";
 import Info from "./Info";
 
-//TODO разобраться с типами
-const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
+interface StateProps {
+    salaryType: SalaryType,
+    personalTax: boolean,
+}
+interface DispatchProps {
+    changeAmount: (amount: number) => void,
+}
+
+type Props = StateProps & DispatchProps;
+
+const Salary: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
+    const { salaryType, personalTax, changeAmount } = props;
+    console.log(salaryType);
 
     const switchText: () => string = () => {
         if (salaryType === 'perDay')
@@ -84,7 +95,7 @@ const Salary: React.FC = ({salaryType, personalTax, changeAmount}: any) => {
     )
 };
 
-export default reduxForm({
+export default reduxForm<{}, Props>({
     form: 'salary',
     validate(values: SalaryFormTypes): FormErrors<SalaryFormTypes> {
         const errors: FormErrors<SalaryFormTypes> = { };
