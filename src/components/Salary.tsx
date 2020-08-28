@@ -18,7 +18,6 @@ type Props = StateProps & DispatchProps;
 
 const Salary: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
     const { salaryType, personalTax, changeAmount } = props;
-    console.log(salaryType);
 
     const switchText: () => string = () => {
         if (salaryType === 'perDay')
