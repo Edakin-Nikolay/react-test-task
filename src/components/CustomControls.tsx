@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from "react";
 import Form from "react-bootstrap/Form";
+import {splitIntoDigits} from "../lib/util";
 
 interface checkButtonProps {
     input: any,
@@ -43,8 +44,23 @@ export const SwitchButton: FunctionComponent<switchButtonProps> = ({input, switc
 export const TextField: React.FC = (props: any) => {
     const {input, meta} = props;
 
+    const onChange = (e: any) => {
+        const rawValue: string = e.target.value;
+        const val: number = Number(rawValue.replace(/\D+/g, ""));
+        if (val && val < 100000000) {
+            input.onChange(val);
+        } else if (rawValue === "") {
+            input.onChange(0);
+        }
+    }
+
+
     return <Form.Group>
-        <Form.Control className='mainFont textField' onChange={input.onChange} value={input.value}/>
+        <Form.Control
+            id='textField'
+            className='mainFont textField'
+            onChange={onChange}
+            value={splitIntoDigits(input.value)}/>
         {meta.error && <Form.Text className='errorText'>{meta.error}</Form.Text>}
     </Form.Group>
 }

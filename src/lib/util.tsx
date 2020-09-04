@@ -17,5 +17,10 @@ export const calcFinalSalary:
             employeeCost: amount,
         }
     }
-
 }
+
+//regExp для разделения числа на разряды
+const regExp: RegExp = /(?<=\d)(?=(\d{3})+(?!\d))/g;
+
+export const splitIntoDigits: (val: number) => string = (val: number) =>
+    val.toString().replace(regExp, " ");
