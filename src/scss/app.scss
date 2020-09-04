@@ -140,6 +140,14 @@ $font-Arial: Arial, sans-serif;
   text-align: center;
 }
 
+.btnCircle:hover, .btnCircle:focus, .btnCircle:active,
+.btnCircle.active {
+  color: $info;
+  background-color: transparent;
+  border-color: $info;
+  box-shadow: none;
+}
+
 span {
   &.dangerText {
     color: #dc3545;
