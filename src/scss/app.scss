@@ -32,8 +32,44 @@ $font-Arial: Arial, sans-serif;
   margin-right: 4px;
 }
 
-.radioButton:checked {
-  color: $dark;
+.radioItem {
+  display: flex;
+  position: relative;
+  padding: 0 6px;
+}
+
+.radioItem input[type='radio'] {
+  display: none;
+}
+
+.radioItem label {
+  @extend .mainFont
+}
+
+.radioItem label:before {
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 1px;
+  margin: 0 10px 0 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid $border-color;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.radioItem input[type='radio']:checked + label:after {
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  content: " ";
+  display: block;
+  background: $dark;
 }
 
 //tooltip override
@@ -41,16 +77,23 @@ $font-Arial: Arial, sans-serif;
 .tooltip.bottom .tooltip-arrow { border-bottom-color: $info; }
 
 .textField {
-  border-radius: 15px;
-  margin-right: 8px;
-  max-width: 250px;
+  border-radius: 20px;
+  margin-right: 10px;
+  padding: 0 0 0 14px;
+  width: 160px;
+  height: 30px;
 }
 
-
-.marginContainer {
-  margin-left: 14px;
+.radioButtonsContainer {
+  margin-left: 10px;
   margin-top: 4px;
   margin-bottom: 4px;
+}
+
+.textBoxContainer {
+  margin-left: 34px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .formInline {
@@ -60,7 +103,7 @@ $font-Arial: Arial, sans-serif;
 }
 
 .jumbotron {
-  padding: 24px;
+  padding: 24px 24px 24px 40px;
   margin-top: 8px;
   background-color: $primary;
   max-width: 400px;
@@ -78,8 +121,7 @@ $font-Arial: Arial, sans-serif;
   text-align: center;
 }
 
-
-  span {
+span {
   &.dangerText {
     color: #dc3545;
   }

@@ -7,15 +7,14 @@ interface checkButtonProps {
     label: string,
     type: 'checkbox' | 'radio' | undefined,
     checkId: number,
-    styles: Array<string>,
     changeAmount: (value: string) => void}
 
 export const CheckButton: FunctionComponent<checkButtonProps> =
-    ({input, label, type, checkId, styles, changeAmount}: checkButtonProps) => {
+    ({input, label, type, checkId, changeAmount}: checkButtonProps) => {
 
     return <Form.Check
         id={`${type}-${checkId}`}
-        className={styles ? `mainFont ${styles.join(' ')}` : 'mainFont'}
+        className='radioItem'
         type={type}
         label={label}
         checked={input.checked || input.value === true}
@@ -64,3 +63,19 @@ export const TextField: React.FC = (props: any) => {
         {meta.error && <Form.Text className='errorText'>{meta.error}</Form.Text>}
     </Form.Group>
 }
+
+/*
+return <FormCheck
+    id={`${type}-${checkId}`}
+    className={styles ? `mainFont ${styles.join(' ')}` : 'containerRadio'}>
+    <FormCheck.Input
+        onChange={(v: any) => {
+            changeAmount(input.value);
+            input.onChange(v);}}
+        checked={input.checked || input.value === true}
+        value={input.value}
+        type={type}/>
+    <span className='checkmark' />
+    <FormCheck.Label>{label}</FormCheck.Label>
+</FormCheck>};
+*/

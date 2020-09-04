@@ -41,7 +41,7 @@ const Salary: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
     return (
         <Form >
             <Form.Text muted className='secondFont'>Сумма</Form.Text>
-            <Form.Group className='marginContainer'>
+            <Form.Group className='radioButtonsContainer'>
                 <Field
                     checkId={1}
                     name='salaryType'
@@ -77,15 +77,15 @@ const Salary: React.FC<Props & InjectedFormProps<{}, Props>> = (props: any) => {
                     label='Оплата за час'
                     type='radio'
                     value={SalaryType.PER_HOUR}/>
-                <Form.Row className='formInline marginContainer'>
+                <Form.Row className='formInline textBoxContainer'>
                     <Form.Text className='secondFont' muted={personalTax}>Указать с НДФЛ</Form.Text>
                     <Field
                         switchId={1}
                         name='personalTax'
                         component={SwitchButton}/>
-                    <Form.Text className='secondFont' muted={!personalTax}>без НДФЛ</Form.Text>
+                    <Form.Text className='secondFont' muted={!personalTax}>Без НДФЛ</Form.Text>
                 </Form.Row>
-                <Form.Row className='formInline marginContainer'>
+                <Form.Row className='formInline textBoxContainer'>
                     <Field name='amount' component={TextField} />
                     <Form.Text className='mainFont'>{switchText()}</Form.Text>
                 </Form.Row>
