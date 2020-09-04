@@ -73,8 +73,27 @@ $font-Arial: Arial, sans-serif;
 }
 
 //tooltip override
-.tooltip-inner { background-color: $info;}
-.tooltip.bottom .tooltip-arrow { border-bottom-color: $info; }
+.tooltip-inner {
+  margin-left: 12px;
+  margin-top: 6px;
+  text-align: left;
+  background-color: $info;
+  padding: 15px 10px 15px 10px;
+  border-radius: 0;
+  max-width: 220px !important;
+}
+
+.tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow::before, .tooltip.bs-tooltip-bottom .arrow::before {
+  margin-left: 6px;
+  margin-bottom: -6px;
+  content: "";
+  border-width: 0 10px 10px 0;
+  border-bottom-color: $info;
+}
+
+.tooltip.show {
+  opacity: 1;
+}
 
 .textField {
   border-radius: 20px;
